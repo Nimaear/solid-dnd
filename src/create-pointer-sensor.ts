@@ -8,7 +8,7 @@ import {
 } from "./drag-drop-context";
 import { Transform } from "./layout";
 
-const createPointerSensor = (id: Id = "pointer-sensor"): void => {
+const createPointerSensor = (id: Id = "pointer-sensor", activationDelay: number = 250, activationDistance: number = 10): void => {
   const [
     state,
     {
@@ -21,8 +21,6 @@ const createPointerSensor = (id: Id = "pointer-sensor"): void => {
       dragEnd,
     },
   ] = useDragDropContext()!;
-  const activationDelay = 250; // milliseconds
-  const activationDistance = 10; // pixels
 
   onMount(() => {
     addSensor({ id, activators: { pointerdown: attach } });
